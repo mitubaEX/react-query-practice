@@ -5,9 +5,20 @@ import { fetchCardList } from './api/CardListApi'
 
 export const CardList = () => {
   // Queries
-  const query = useQuery(['CardList'], fetchCardList)
+  const { isLoading, isError, data, error } = useQuery(['CardList'], fetchCardList)
+
+  if (isLoading) {
+    return <span>Loading...</span>
+  }
+
+  if (isError) {
+    return <span>Error: {error.message}</span>
+  }
 
   return (
-    <div>{query.data}</div>
+    <div>
+      {data}
+      <p>query</p>
+    </div>
   )
 }
