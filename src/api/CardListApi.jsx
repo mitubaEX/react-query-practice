@@ -1,3 +1,6 @@
+import axios from 'axios'
+
 export const fetchCardList = async () => {
-  await new Promise(resolve => setTimeout(() => { console.log(1); resolve }, 1000))
+  const res = await axios.get('http://localhost:3000/posts/1')
+  return res.data
 }

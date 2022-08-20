@@ -17,8 +17,8 @@ export const CardList = () => {
 
   return (
     <div>
-      {data}
-      <p>query</p>
+      <p>title: {data.title}</p>
+      <p>author: {data.author}</p>
     </div>
   )
 }
