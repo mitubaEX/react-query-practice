@@ -1,11 +1,11 @@
 import {
   useQuery,
 } from '@tanstack/react-query'
-import { fetchCardList } from './api/CardListApi'
+import { fetchCards } from './api/CardApi'
 
 export const CardList = () => {
   // Queries
-  const { isLoading, isError, data, error } = useQuery(['CardList'], fetchCardList)
+  const { isLoading, isError, data, error } = useQuery(['cards'], fetchCards)
 
   if (isLoading) {
     return <span>Loading...</span>
@@ -17,8 +17,16 @@ export const CardList = () => {
 
   return (
     <div>
-      <p>title: {data.title}</p>
-      <p>author: {data.author}</p>
+      {
+        data.map((card) => {
+          return (
+            <>
+              <p>title: {card.title} author: {card.author}</p>
+            </>
+          )
+
+        })
+      }
     </div>
   )
 }
